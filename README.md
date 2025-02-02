@@ -1,0 +1,2 @@
+# lazy
+A lazy promise.
