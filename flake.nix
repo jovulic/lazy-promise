@@ -1,5 +1,5 @@
 {
-  description = "Lazy Promise. A lazy promise that waits until you ask it to get to work.";
+  description = "A lazy promise that waits until you ask it to get to work.";
 
   inputs = {
     nixpkgs.url = "nixpkgs/nixos-24.11";
