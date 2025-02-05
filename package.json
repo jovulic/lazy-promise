@@ -13,6 +13,7 @@
   "scripts": {
     "build": "tsc --project tsconfig.build.json",
     "test": "vitest",
+    "lint": "eslint ."
   },
   "repository": {
     "type": "git",
@@ -36,7 +37,10 @@
   },
   "homepage": "https://github.com/jovulic/lazy#readme",
   "devDependencies": {
+    "@eslint/js": "^9.19.0",
+    "eslint": "^9.19.0",
     "typescript": "^5.7.3",
+    "typescript-eslint": "^8.23.0",
     "vitest": "^3.0.4"
   }
 }
