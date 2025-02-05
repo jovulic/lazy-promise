@@ -46,25 +46,6 @@ export class LazyPromise<T> implements Promise<T> {
     return this.promise;
   }
 
-  then<TResult1 = T, TResult2 = never>(
-    onFulfilled?:
-      | ((value: T) => TResult1 | PromiseLike<TResult1>)
-      | undefined
-      | null,
-    onRejected?:
-      | ((reason: any) => TResult2 | PromiseLike<TResult2>)
-      | undefined
-      | null,
-  ): Promise<TResult1 | TResult2> {
-    return this.value.then(onFulfilled, onRejected);
-  }
-  finally: typeof this.value.finally = (onFinally) => {
-    return this.value.finally(onFinally);
-  };
-  catch: typeof this.value.catch = (onRejected) => {
-    return this.value.catch(onRejected);
-  };
-
   /**
    * {@link later} transforms the value inside Lazy using a provided function.
    * The transformation is deferred until the value is accessed.
@@ -97,4 +78,23 @@ export class LazyPromise<T> implements Promise<T> {
   reset(): void {
     this.promise = null;
   }
+
+  then<TResult1 = T, TResult2 = never>(
+    onFulfilled?:
+      | ((value: T) => TResult1 | PromiseLike<TResult1>)
+      | undefined
+      | null,
+    onRejected?:
+      | ((reason: any) => TResult2 | PromiseLike<TResult2>)
+      | undefined
+      | null,
+  ): Promise<TResult1 | TResult2> {
+    return this.value.then(onFulfilled, onRejected);
+  }
+  finally: typeof this.value.finally = (onFinally) => {
+    return this.value.finally(onFinally);
+  };
+  catch: typeof this.value.catch = (onRejected) => {
+    return this.value.catch(onRejected);
+  };
 }
