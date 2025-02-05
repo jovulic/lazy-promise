@@ -10,7 +10,7 @@ _A lazy promise that waits until you ask it to get to work._
 
 ## **📌 Description**
 
-`LazyPromise` is a lightweight utility for **lazily initializing** values in JavaScript and TypeScript. Its main feature is lazy evaluation, ensuring that no computation occurs until the value is explicitly awaited. Additionally, `LazyPromise` supports lazy chaining.
+`LazyPromise` is a lightweight utility for lazily initializing values in JavaScript and TypeScript. Specifically, it will not perform any computation until the value is accessed (e.g., awaited). Additionally, `LazyPromise` supports lazy chaining, allowing you to chain operations that also won’t execute until the result is needed.
 
 ## **✨ Features**
 
