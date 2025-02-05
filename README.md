@@ -69,11 +69,3 @@ const transformedValue = lazyValue.then((value) => value.toUpperCase());
 
 console.log(await transformedValue); // "MY LAZY VALUE"
 ```
-
----
-
-## **📜 License**
-
-MIT License © 2024 [Josip Vulic](https://github.com/jovulic)
-
----
