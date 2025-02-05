@@ -2,11 +2,11 @@
 
 This repository is a personal project created for practicing the process of building and publishing an open-source library.
 
+[![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](https://opensource.org/licenses/MIT)
+
 # **LazyPromise**
 
 _A lazy promise that waits until you ask it to get to work._
-
-[![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 
 ## **📌 Description**
 
