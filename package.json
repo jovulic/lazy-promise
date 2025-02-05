@@ -1,0 +1,42 @@
+{
+  "name": "lazy",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "A lazy promise that waits until you ask it to get to work.",
+  "main": "./.output/index.cjs",
+  "module": "./.output/index.mjs",
+  "exports": {
+    "types": "./.output/index.d.ts",
+    "import": "./.output/index.mjs",
+    "require": "./.output/index.cjs"
+  },
+  "scripts": {
+    "build": "tsc --project tsconfig.build.json",
+    "test": "vitest",
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jovulic/lazy.git"
+  },
+  "keywords": [
+    "lazy",
+    "lazy evaluation",
+    "lazy loading",
+    "memoization",
+    "promise",
+    "cache",
+    "javascript",
+    "typescript",
+    "async utilities"
+  ],
+  "author": "Josip Vulic",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jovulic/lazy/issues"
+  },
+  "homepage": "https://github.com/jovulic/lazy#readme",
+  "devDependencies": {
+    "typescript": "^5.7.3",
+    "vitest": "^3.0.4"
+  }
+}
