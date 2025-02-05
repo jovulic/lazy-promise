@@ -91,9 +91,11 @@ export class LazyPromise<T> implements Promise<T> {
   ): Promise<TResult1 | TResult2> {
     return this.value.then(onFulfilled, onRejected);
   }
+
   finally: typeof this.value.finally = (onFinally) => {
     return this.value.finally(onFinally);
   };
+
   catch: typeof this.value.catch = (onRejected) => {
     return this.value.catch(onRejected);
   };
