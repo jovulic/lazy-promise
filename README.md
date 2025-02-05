@@ -2,7 +2,7 @@
 
 This repository is a personal project created for practicing the process of building and publishing an open-source library.
 
-# **Lazy Promise**
+# **LazyPromise**
 
 _A lazy promise that waits until you ask it to get to work._
 
@@ -10,7 +10,7 @@ _A lazy promise that waits until you ask it to get to work._
 
 ## **📌 Description**
 
-`Lazy Promise` is a lightweight utility for **lazily initializing** values in JavaScript and TypeScript. Its main feature is lazy evaluation, ensuring that no computation occurs until the value is explicitly awaited. Additionally, `Lazy Promise` supports lazy chaining.
+`LazyPromise` is a lightweight utility for **lazily initializing** values in JavaScript and TypeScript. Its main feature is lazy evaluation, ensuring that no computation occurs until the value is explicitly awaited. Additionally, `LazyPromise` supports lazy chaining.
 
 ## **✨ Features**
 
