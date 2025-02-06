@@ -67,7 +67,7 @@ const lazyValue = new LazyPromise(async () => {
   return "My Lazy Value";
 });
 
-const transformedValue = lazyValue.then((value) => value.toUpperCase());
+const transformedValue = lazyValue.later((value) => value.toUpperCase());
 
 console.log(await transformedValue); // "MY LAZY VALUE"
 ```
