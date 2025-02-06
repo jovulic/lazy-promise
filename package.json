@@ -1,6 +1,6 @@
 {
   "name": "@jovulic/lazy-promise",
-  "version": "1.0.0",
+  "version": "0.0.1",
   "type": "module",
   "description": "A lazy promise that waits until you ask it to get to work.",
   "main": "./dist/index.cjs",
