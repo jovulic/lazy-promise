@@ -1,17 +1,14 @@
 {
   "name": "@jovulic/lazy-promise",
   "version": "0.0.1",
-  "type": "module",
   "description": "A lazy promise that waits until you ask it to get to work.",
-  "main": "./dist/index.cjs",
-  "module": "./dist/index.mjs",
+  "type": "module",
   "exports": {
     "types": "./dist/index.d.ts",
-    "import": "./dist/index.mjs",
-    "require": "./dist/index.cjs"
+    "import": "./dist/index.js"
   },
   "scripts": {
-    "build": "tsc --project tsconfig.build.json",
+    "build": "rm -r ./dist && tsc --project tsconfig.build.json",
     "test": "vitest",
     "lint": "eslint .",
     "publish": "npm publish --access public"
@@ -45,8 +42,6 @@
     "vitest": "^3.0.4"
   },
   "files": [
-    "dist",
-    "README.md",
-    "LICENSE"
+    "dist"
   ]
 }
