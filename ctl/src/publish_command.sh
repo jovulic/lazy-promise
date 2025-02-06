@@ -6,5 +6,13 @@ if [ -n "$(git status --porcelain)" ]; then
   exit 1
 fi
 
+root=$(git rev-parse --show-toplevel)
+
 ctl build
+
 npm run publish
+
+version=$(jq -r '.version' "$root/package.json")
+tag="v$version"
+git tag "$tag"
+git push origin "$tag"
