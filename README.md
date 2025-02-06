@@ -58,7 +58,7 @@ const lazyValue = new LazyPromise(async () => {
 })();
 ```
 
-### **Chaining**
+### **Lazy Chaining**
 
 ```ts
 import { LazyPromise } from "lazy-promise";
