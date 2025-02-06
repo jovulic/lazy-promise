@@ -61,16 +61,6 @@ export class LazyPromise<T> implements Promise<T> {
   }
 
   /**
-   * {@link load} immediately computed and caches the value. Useful for
-   * preloading values before they are needed.
-   *
-   * @returns A promise that resolves once the value is loaded.
-   */
-  async load(): Promise<void> {
-    await this.value;
-  }
-
-  /**
    * {@link reset} resets the cached value forcing a recomputation on next
    * access. This does not affect any existing promises that were already
    * awaited.
