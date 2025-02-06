@@ -249,6 +249,7 @@ ctl_publish_command() {
 		exit 1
 	fi
 
+	ctl build
 	npm run publish
 
 }
