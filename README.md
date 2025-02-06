@@ -19,7 +19,7 @@ _A lazy promise that waits until you ask it to get to work._
 ✅ **Lazy evaluation** – Compute values only when first accessed.  
 ✅ **Lazy Chaining** – Define transformations to values lazily.  
 ✅ **Minimal** – No dependencies.  
-✅ **TypeScript support** – Fully typed with excellent autocompletion.
+✅ **TypeScript support** – Fully typed.
 
 ## **📦 Installation**
 
