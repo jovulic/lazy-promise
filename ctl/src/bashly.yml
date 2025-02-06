@@ -1,0 +1,11 @@
+name: ctl
+version: 1.0.0
+commands:
+  - name: bashly
+    help: Regenerate ctl script.
+  - name: test
+    help: Run tests.
+  - name: build
+    help: Build the library.
+  - name: publish
+    help: Publish the library to npm.
