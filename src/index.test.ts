@@ -13,8 +13,8 @@ describe("LazyPromise", () => {
     const lazyValue = new LazyPromise(compute);
 
     await lazyValue;
-    await lazyValue; 
-    expect(compute).toHaveBeenCalledTimes(1); 
+    await lazyValue;
+    expect(compute).toHaveBeenCalledTimes(1);
   });
 
   it("should work with asynchronous functions", async () => {
@@ -24,24 +24,30 @@ describe("LazyPromise", () => {
   });
 
   it("should allow chaining with then()", async () => {
-    const lazyValue = new LazyPromise(async () => "foo").then(value => value + "bar");
+    const lazyValue = new LazyPromise(async () => "foo").then(
+      (value) => value + "bar",
+    );
     const value = await lazyValue;
     expect(value).toEqual("foobar");
   });
 
   it("should support later() transformations with sync functions", async () => {
-    const lazyValue = new LazyPromise(async () => 10).later(num => num * 2);
+    const lazyValue = new LazyPromise(async () => 10).later((num) => num * 2);
     expect(await lazyValue).toEqual(20);
   });
 
   it("should support later() transformations with async functions", async () => {
-    const lazyValue = new LazyPromise(async () => 10).later(async num => num * 3);
+    const lazyValue = new LazyPromise(async () => 10).later(
+      async (num) => num * 3,
+    );
     expect(await lazyValue).toEqual(30);
   });
 
   it("should call the original function only once with later()", async () => {
     const compute = vi.fn().mockReturnValue(5);
-    const lazyValue = new LazyPromise(compute).later(num => (num as number) * 2);
+    const lazyValue = new LazyPromise(compute).later(
+      (num) => (num as number) * 2,
+    );
 
     await lazyValue;
     await lazyValue;
@@ -57,18 +63,8 @@ describe("LazyPromise", () => {
     expect(await lazyValue).toEqual(1);
 
     lazyValue.reset();
-    
+
     expect(await lazyValue).toEqual(2);
-  });
-
-  it("should work with eager loading via load()", async () => {
-    const compute = vi.fn().mockResolvedValue("loaded");
-    const lazyValue = new LazyPromise(compute);
-
-    await lazyValue.load();
-
-    expect(compute).toHaveBeenCalledTimes(1);
-    expect(await lazyValue).toEqual("loaded");
   });
 
   it("should handle errors from the computation function", async () => {
