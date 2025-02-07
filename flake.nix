@@ -31,6 +31,9 @@
             pkgs.nodejs
             pkgs.nodePackages.npm
           ];
+          shellHook = ''
+            ctl setup --lazy
+          '';
         };
         packages.default =
           let
@@ -43,8 +46,8 @@
           pkgs.buildNpmPackage {
             pname = "lazy-promise";
             version = commitHashShort;
-            src = pkgs.lib.cleanSourceWith {
-              src = pkgs.lib.cleanSource ./.;
+            src = pkgs.lib.sources.cleanSourceWith {
+              src = pkgs.lib.sources.cleanSource ./.;
               filter =
                 path: type:
                 let
