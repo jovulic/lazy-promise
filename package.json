@@ -8,8 +8,9 @@
     "import": "./dist/index.js"
   },
   "scripts": {
-    "build": "rm -r ./dist && tsc --project tsconfig.build.json",
-    "test": "vitest",
+    "format": "prettier --write ./package.json ./*.mjs ./*.ts ./src/**/*.ts",
+    "build": "rm -rf ./dist && tsc --project tsconfig.build.json",
+    "test": "vitest run",
     "lint": "eslint .",
     "publish": "npm publish --access public"
   },
@@ -39,7 +40,8 @@
     "eslint": "^9.19.0",
     "typescript": "^5.7.3",
     "typescript-eslint": "^8.23.0",
-    "vitest": "^3.0.4"
+    "vitest": "^3.0.4",
+    "prettier": "^3.4.2"
   },
   "files": [
     "dist"
