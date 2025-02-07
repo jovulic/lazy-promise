@@ -3,6 +3,11 @@ version: 1.0.0
 commands:
   - name: bashly
     help: Regenerate ctl script.
+  - name: setup
+    help: Run repository seutp.
+    flags:
+      - long: --lazy
+        help: Only perform setup if the repository does not look setup.
   - name: format
     help: Run formatting.
   - name: lint

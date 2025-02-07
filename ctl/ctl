@@ -27,6 +27,7 @@ ctl_usage() {
 	# :command.usage_commands
 	printf "%s\n" "Commands:"
 	printf "  %s   Regenerate ctl script.\n" "bashly "
+	printf "  %s   Run repository seutp.\n" "setup  "
 	printf "  %s   Run formatting.\n" "format "
 	printf "  %s   Run linting.\n" "lint   "
 	printf "  %s   Run tests.\n" "test   "
@@ -61,6 +62,33 @@ ctl_bashly_usage() {
 	# :command.long_usage
 	if [[ -n "$long_usage" ]]; then
 		printf "%s\n" "Options:"
+
+		# :command.usage_fixed_flags
+		printf "  %s\n" "--help, -h"
+		printf "    Show this help\n"
+		echo
+
+	fi
+}
+
+# :command.usage
+ctl_setup_usage() {
+	printf "ctl setup - Run repository seutp.\n\n"
+
+	printf "%s\n" "Usage:"
+	printf "  ctl setup [OPTIONS]\n"
+	printf "  ctl setup --help | -h\n"
+	echo
+
+	# :command.long_usage
+	if [[ -n "$long_usage" ]]; then
+		printf "%s\n" "Options:"
+
+		# :command.usage_flags
+		# :flag.usage
+		printf "  %s\n" "--lazy"
+		printf "    Only perform setup if the repository does not look setup.\n"
+		echo
 
 		# :command.usage_fixed_flags
 		printf "  %s\n" "--help, -h"
@@ -261,12 +289,44 @@ ctl_bashly_command() {
 }
 
 # :command.function
+ctl_setup_command() {
+
+	# src/setup_command.sh
+	# shellcheck shell=bash
+
+	set -eo pipefail
+
+	set +o nounset
+	lazy="${args[--lazy]}"
+	set -o nounset
+
+	root=$(git rev-parse --show-toplevel)
+	if [ ! "$lazy" ] || [ ! -d "${root}/node_modules" ]; then
+		echo "running npm install"
+		npm install
+	fi
+
+	set +eo pipefail
+
+}
+
+# :command.function
 ctl_format_command() {
 
 	# src/format_command.sh
 	# shellcheck shell=bash
 
+	set -eo pipefail
+
+	root=$(git rev-parse --show-toplevel)
+
+	if [ ! -d "${root}/node_modules" ]; then
+		npm install
+	fi
+
 	npm run format
+
+	set +eo pipefail
 
 }
 
@@ -276,7 +336,17 @@ ctl_lint_command() {
 	# src/lint_command.sh
 	# shellcheck shell=bash
 
+	set -eo pipefail
+
+	root=$(git rev-parse --show-toplevel)
+
+	if [ ! -d "${root}/node_modules" ]; then
+		npm install
+	fi
+
 	npm run lint
+
+	set +eo pipefail
 
 }
 
@@ -286,7 +356,17 @@ ctl_test_command() {
 	# src/test_command.sh
 	# shellcheck shell=bash
 
+	set -eo pipefail
+
+	root=$(git rev-parse --show-toplevel)
+
+	if [ ! -d "${root}/node_modules" ]; then
+		npm install
+	fi
+
 	npm run test
+
+	set +eo pipefail
 
 }
 
@@ -296,7 +376,17 @@ ctl_build_command() {
 	# src/build_command.sh
 	# shellcheck shell=bash
 
+	set -eo pipefail
+
+	root=$(git rev-parse --show-toplevel)
+
+	if [ ! -d "${root}/node_modules" ]; then
+		npm install
+	fi
+
 	npm run build
+
+	set +eo pipefail
 
 }
 
@@ -306,15 +396,22 @@ ctl_publish_command() {
 	# src/publish_command.sh
 	# shellcheck shell=bash
 
+	set -eo pipefail
+
+	root=$(git rev-parse --show-toplevel)
+
+	if [ ! -d "${root}/node_modules" ]; then
+		npm install
+	fi
+
+	ctl format
+
 	# We do not want to proceed with publishing if there are uncommitted changes.
 	if [ -n "$(git status --porcelain)" ]; then
 		echo "unable to publish as there are uncommitted changes"
 		exit 1
 	fi
 
-	root=$(git rev-parse --show-toplevel)
-
-	ctl format
 	ctl lint
 	ctl test
 	ctl build
@@ -325,6 +422,8 @@ ctl_publish_command() {
 	tag="v$version"
 	git tag "$tag"
 	git push origin "$tag"
+
+	set +eo pipefail
 
 }
 
@@ -362,6 +461,13 @@ parse_requirements() {
 			action="bashly"
 			shift
 			ctl_bashly_parse_requirements "$@"
+			shift $#
+			;;
+
+		setup)
+			action="setup"
+			shift
+			ctl_setup_parse_requirements "$@"
 			shift $#
 			;;
 
@@ -462,6 +568,58 @@ ctl_bashly_parse_requirements() {
 	while [[ $# -gt 0 ]]; do
 		key="$1"
 		case "$key" in
+
+			-?*)
+				printf "invalid option: %s\n" "$key" >&2
+				exit 1
+				;;
+
+			*)
+				# :command.parse_requirements_case
+				# :command.parse_requirements_case_simple
+				printf "invalid argument: %s\n" "$key" >&2
+				exit 1
+
+				;;
+
+		esac
+	done
+
+}
+
+# :command.parse_requirements
+ctl_setup_parse_requirements() {
+	# :command.fixed_flags_filter
+	while [[ $# -gt 0 ]]; do
+		key="$1"
+		case "$key" in
+			--help | -h)
+				long_usage=yes
+				ctl_setup_usage
+				exit
+				;;
+
+			*)
+				break
+				;;
+
+		esac
+	done
+
+	# :command.command_filter
+	action="setup"
+
+	# :command.parse_requirements_while
+	while [[ $# -gt 0 ]]; do
+		key="$1"
+		case "$key" in
+			# :flag.case
+			--lazy)
+
+				# :flag.case_no_arg
+				args['--lazy']=1
+				shift
+				;;
 
 			-?*)
 				printf "invalid option: %s\n" "$key" >&2
@@ -726,6 +884,7 @@ run() {
 
 	case "$action" in
 		"bashly") ctl_bashly_command ;;
+		"setup") ctl_setup_command ;;
 		"format") ctl_format_command ;;
 		"lint") ctl_lint_command ;;
 		"test") ctl_test_command ;;
