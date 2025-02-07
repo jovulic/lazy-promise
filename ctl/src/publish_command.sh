@@ -24,7 +24,7 @@ ctl build
 # Note that we normally do not publish the package. Instead we delegate that to
 # GitHub Actions which will look for the tag and perform the publishing.
 if [ "$local" ]; then
-  npm run publish
+  npm publish --access public
 fi
 
 version=$(jq -r '.version' "$root/package.json")

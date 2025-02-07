@@ -11,8 +11,7 @@
     "format": "prettier --write ./package.json ./*.mjs ./*.ts ./src/**/*.ts",
     "build": "rm -rf ./dist && tsc --project tsconfig.build.json",
     "test": "vitest run",
-    "lint": "eslint .",
-    "publish": "npm publish --access public"
+    "lint": "eslint ."
   },
   "repository": {
     "type": "git",
