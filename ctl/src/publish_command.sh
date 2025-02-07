@@ -29,7 +29,7 @@ fi
 
 version=$(jq -r '.version' "$root/package.json")
 tag="v$version"
-git tag "$tag"
+git tag -f "$tag"
 git push origin "$tag"
 
 set +eo pipefail
