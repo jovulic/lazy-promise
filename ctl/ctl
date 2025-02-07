@@ -318,12 +318,7 @@ ctl_format_command() {
 
 	set -eo pipefail
 
-	root=$(git rev-parse --show-toplevel)
-
-	if [ ! -d "${root}/node_modules" ]; then
-		npm install
-	fi
-
+	ctl setup --lazy
 	npm run format
 
 	set +eo pipefail
@@ -338,12 +333,7 @@ ctl_lint_command() {
 
 	set -eo pipefail
 
-	root=$(git rev-parse --show-toplevel)
-
-	if [ ! -d "${root}/node_modules" ]; then
-		npm install
-	fi
-
+	ctl setup --lazy
 	npm run lint
 
 	set +eo pipefail
@@ -358,12 +348,7 @@ ctl_test_command() {
 
 	set -eo pipefail
 
-	root=$(git rev-parse --show-toplevel)
-
-	if [ ! -d "${root}/node_modules" ]; then
-		npm install
-	fi
-
+	ctl setup --lazy
 	npm run test
 
 	set +eo pipefail
@@ -378,12 +363,7 @@ ctl_build_command() {
 
 	set -eo pipefail
 
-	root=$(git rev-parse --show-toplevel)
-
-	if [ ! -d "${root}/node_modules" ]; then
-		npm install
-	fi
-
+	ctl setup --lazy
 	npm run build
 
 	set +eo pipefail
@@ -400,10 +380,7 @@ ctl_publish_command() {
 
 	root=$(git rev-parse --show-toplevel)
 
-	if [ ! -d "${root}/node_modules" ]; then
-		npm install
-	fi
-
+	ctl setup --lazy
 	ctl format
 
 	# We do not want to proceed with publishing if there are uncommitted changes.

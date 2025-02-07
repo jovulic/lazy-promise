@@ -2,12 +2,7 @@
 
 set -eo pipefail
 
-root=$(git rev-parse --show-toplevel)
-
-if [ ! -d "${root}/node_modules" ]; then
-  npm install
-fi
-
+ctl setup --lazy
 npm run lint
 
 set +eo pipefail

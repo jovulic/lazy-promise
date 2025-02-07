@@ -4,10 +4,7 @@ set -eo pipefail
 
 root=$(git rev-parse --show-toplevel)
 
-if [ ! -d "${root}/node_modules" ]; then
-  npm install
-fi
-
+ctl setup --lazy
 ctl format
 
 # We do not want to proceed with publishing if there are uncommitted changes.
