@@ -13,7 +13,6 @@
       let
         pkgs = import inputs.nixpkgs {
           inherit system;
-          config.allowUnfree = true;
         };
         ctl =
           with pkgs;
@@ -23,7 +22,7 @@
           };
       in
       {
-        devShell = pkgs.mkShell {
+        devShells.default = pkgs.mkShell {
           packages = [
             pkgs.git
             pkgs.bash
@@ -33,6 +32,36 @@
             pkgs.nodePackages.npm
           ];
         };
+        packages.default =
+          let
+            commitHashShort =
+              if (builtins.hasAttr "shortRev" inputs.self) then
+                inputs.self.shortRev
+              else
+                inputs.self.dirtyShortRev;
+          in
+          pkgs.buildNpmPackage {
+            pname = "lazy-promise";
+            version = commitHashShort;
+            src = pkgs.lib.cleanSourceWith {
+              src = pkgs.lib.cleanSource ./.;
+              filter =
+                path: type:
+                let
+                  baseName = builtins.baseNameOf path;
+                in
+                baseName == "package-lock.json"
+                || baseName == "package.json"
+                || baseName == "tsconfig.json"
+                || baseName == "tsconfig.build.json"
+                || pkgs.lib.hasPrefix (toString ./src) (toString path) && !(pkgs.lib.hasSuffix ".test.ts" baseName);
+            };
+            npmDepsHash = "sha256-mTJdK9wUPEbmCjbQ8JeJ2vhIJGA1e2UPdktnW1+CCDI=";
+            installPhase = ''
+              mkdir -p $out/dist
+              cp -r dist $out/
+            '';
+          };
       }
     );
 }
