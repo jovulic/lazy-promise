@@ -8,6 +8,9 @@ fi
 
 root=$(git rev-parse --show-toplevel)
 
+ctl format
+ctl lint
+ctl test
 ctl build
 
 npm run publish

@@ -3,9 +3,13 @@ version: 1.0.0
 commands:
   - name: bashly
     help: Regenerate ctl script.
+  - name: format
+    help: Run formatting.
+  - name: lint
+    help: Run linting.
   - name: test
     help: Run tests.
   - name: build
-    help: Build the library.
+    help: Build the package.
   - name: publish
-    help: Publish the library to npm.
+    help: Publish the package to npm.

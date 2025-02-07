@@ -27,9 +27,11 @@ ctl_usage() {
 	# :command.usage_commands
 	printf "%s\n" "Commands:"
 	printf "  %s   Regenerate ctl script.\n" "bashly "
+	printf "  %s   Run formatting.\n" "format "
+	printf "  %s   Run linting.\n" "lint   "
 	printf "  %s   Run tests.\n" "test   "
-	printf "  %s   Build the library.\n" "build  "
-	printf "  %s   Publish the library to npm.\n" "publish"
+	printf "  %s   Build the package.\n" "build  "
+	printf "  %s   Publish the package to npm.\n" "publish"
 	echo
 
 	# :command.long_usage
@@ -69,6 +71,48 @@ ctl_bashly_usage() {
 }
 
 # :command.usage
+ctl_format_usage() {
+	printf "ctl format - Run formatting.\n\n"
+
+	printf "%s\n" "Usage:"
+	printf "  ctl format\n"
+	printf "  ctl format --help | -h\n"
+	echo
+
+	# :command.long_usage
+	if [[ -n "$long_usage" ]]; then
+		printf "%s\n" "Options:"
+
+		# :command.usage_fixed_flags
+		printf "  %s\n" "--help, -h"
+		printf "    Show this help\n"
+		echo
+
+	fi
+}
+
+# :command.usage
+ctl_lint_usage() {
+	printf "ctl lint - Run linting.\n\n"
+
+	printf "%s\n" "Usage:"
+	printf "  ctl lint\n"
+	printf "  ctl lint --help | -h\n"
+	echo
+
+	# :command.long_usage
+	if [[ -n "$long_usage" ]]; then
+		printf "%s\n" "Options:"
+
+		# :command.usage_fixed_flags
+		printf "  %s\n" "--help, -h"
+		printf "    Show this help\n"
+		echo
+
+	fi
+}
+
+# :command.usage
 ctl_test_usage() {
 	printf "ctl test - Run tests.\n\n"
 
@@ -91,7 +135,7 @@ ctl_test_usage() {
 
 # :command.usage
 ctl_build_usage() {
-	printf "ctl build - Build the library.\n\n"
+	printf "ctl build - Build the package.\n\n"
 
 	printf "%s\n" "Usage:"
 	printf "  ctl build\n"
@@ -112,7 +156,7 @@ ctl_build_usage() {
 
 # :command.usage
 ctl_publish_usage() {
-	printf "ctl publish - Publish the library to npm.\n\n"
+	printf "ctl publish - Publish the package to npm.\n\n"
 
 	printf "%s\n" "Usage:"
 	printf "  ctl publish\n"
@@ -217,12 +261,31 @@ ctl_bashly_command() {
 }
 
 # :command.function
+ctl_format_command() {
+
+	# src/format_command.sh
+	# shellcheck shell=bash
+
+	npm run format
+
+}
+
+# :command.function
+ctl_lint_command() {
+
+	# src/lint_command.sh
+	# shellcheck shell=bash
+
+	npm run lint
+
+}
+
+# :command.function
 ctl_test_command() {
 
 	# src/test_command.sh
 	# shellcheck shell=bash
 
-	npm run lint
 	npm run test
 
 }
@@ -251,6 +314,9 @@ ctl_publish_command() {
 
 	root=$(git rev-parse --show-toplevel)
 
+	ctl format
+	ctl lint
+	ctl test
 	ctl build
 
 	npm run publish
@@ -296,6 +362,20 @@ parse_requirements() {
 			action="bashly"
 			shift
 			ctl_bashly_parse_requirements "$@"
+			shift $#
+			;;
+
+		format)
+			action="format"
+			shift
+			ctl_format_parse_requirements "$@"
+			shift $#
+			;;
+
+		lint)
+			action="lint"
+			shift
+			ctl_lint_parse_requirements "$@"
 			shift $#
 			;;
 
@@ -377,6 +457,96 @@ ctl_bashly_parse_requirements() {
 
 	# :command.command_filter
 	action="bashly"
+
+	# :command.parse_requirements_while
+	while [[ $# -gt 0 ]]; do
+		key="$1"
+		case "$key" in
+
+			-?*)
+				printf "invalid option: %s\n" "$key" >&2
+				exit 1
+				;;
+
+			*)
+				# :command.parse_requirements_case
+				# :command.parse_requirements_case_simple
+				printf "invalid argument: %s\n" "$key" >&2
+				exit 1
+
+				;;
+
+		esac
+	done
+
+}
+
+# :command.parse_requirements
+ctl_format_parse_requirements() {
+	# :command.fixed_flags_filter
+	while [[ $# -gt 0 ]]; do
+		key="$1"
+		case "$key" in
+			--help | -h)
+				long_usage=yes
+				ctl_format_usage
+				exit
+				;;
+
+			*)
+				break
+				;;
+
+		esac
+	done
+
+	# :command.command_filter
+	action="format"
+
+	# :command.parse_requirements_while
+	while [[ $# -gt 0 ]]; do
+		key="$1"
+		case "$key" in
+
+			-?*)
+				printf "invalid option: %s\n" "$key" >&2
+				exit 1
+				;;
+
+			*)
+				# :command.parse_requirements_case
+				# :command.parse_requirements_case_simple
+				printf "invalid argument: %s\n" "$key" >&2
+				exit 1
+
+				;;
+
+		esac
+	done
+
+}
+
+# :command.parse_requirements
+ctl_lint_parse_requirements() {
+	# :command.fixed_flags_filter
+	while [[ $# -gt 0 ]]; do
+		key="$1"
+		case "$key" in
+			--help | -h)
+				long_usage=yes
+				ctl_lint_usage
+				exit
+				;;
+
+			*)
+				break
+				;;
+
+		esac
+	done
+
+	# :command.command_filter
+	action="lint"
 
 	# :command.parse_requirements_while
 	while [[ $# -gt 0 ]]; do
@@ -556,6 +726,8 @@ run() {
 
 	case "$action" in
 		"bashly") ctl_bashly_command ;;
+		"format") ctl_format_command ;;
+		"lint") ctl_lint_command ;;
 		"test") ctl_test_command ;;
 		"build") ctl_build_command ;;
 		"publish") ctl_publish_command ;;

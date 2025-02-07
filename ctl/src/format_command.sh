@@ -1,3 +1,3 @@
 # shellcheck shell=bash
 
-npm run test
+npm run format
