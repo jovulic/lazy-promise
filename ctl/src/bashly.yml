@@ -7,6 +7,7 @@ commands:
     help: Run repository seutp.
     flags:
       - long: --lazy
+        short: -l
         help: Only perform setup if the repository does not look setup.
   - name: format
     help: Run formatting.
@@ -18,3 +19,7 @@ commands:
     help: Build the package.
   - name: publish
     help: Publish the package to npm.
+    flags:
+      - long: --local
+        short: -l
+        help: Publish the package locally.

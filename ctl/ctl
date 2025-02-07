@@ -86,7 +86,7 @@ ctl_setup_usage() {
 
 		# :command.usage_flags
 		# :flag.usage
-		printf "  %s\n" "--lazy"
+		printf "  %s\n" "--lazy, -l"
 		printf "    Only perform setup if the repository does not look setup.\n"
 		echo
 
@@ -187,13 +187,19 @@ ctl_publish_usage() {
 	printf "ctl publish - Publish the package to npm.\n\n"
 
 	printf "%s\n" "Usage:"
-	printf "  ctl publish\n"
+	printf "  ctl publish [OPTIONS]\n"
 	printf "  ctl publish --help | -h\n"
 	echo
 
 	# :command.long_usage
 	if [[ -n "$long_usage" ]]; then
 		printf "%s\n" "Options:"
+
+		# :command.usage_flags
+		# :flag.usage
+		printf "  %s\n" "--local, -l"
+		printf "    Publish the package locally.\n"
+		echo
 
 		# :command.usage_fixed_flags
 		printf "  %s\n" "--help, -h"
@@ -378,6 +384,10 @@ ctl_publish_command() {
 
 	set -eo pipefail
 
+	set +o nounset
+	local="${args[--local]}"
+	set -o nounset
+
 	root=$(git rev-parse --show-toplevel)
 
 	ctl setup --lazy
@@ -393,7 +403,11 @@ ctl_publish_command() {
 	ctl test
 	ctl build
 
-	npm run publish
+	# Note that we normally do not publish the package. Instead we delegate that to
+	# GitHub Actions which will look for the tag and perform the publishing.
+	if [ "$local" ]; then
+		npm run publish
+	fi
 
 	version=$(jq -r '.version' "$root/package.json")
 	tag="v$version"
@@ -591,7 +605,7 @@ ctl_setup_parse_requirements() {
 		key="$1"
 		case "$key" in
 			# :flag.case
-			--lazy)
+			--lazy | -l)
 
 				# :flag.case_no_arg
 				args['--lazy']=1
@@ -822,6 +836,13 @@ ctl_publish_parse_requirements() {
 	while [[ $# -gt 0 ]]; do
 		key="$1"
 		case "$key" in
+			# :flag.case
+			--local | -l)
+
+				# :flag.case_no_arg
+				args['--local']=1
+				shift
+				;;
 
 			-?*)
 				printf "invalid option: %s\n" "$key" >&2

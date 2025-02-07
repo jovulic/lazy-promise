@@ -2,6 +2,10 @@
 
 set -eo pipefail
 
+set +o nounset
+local="${args[--local]}"
+set -o nounset
+
 root=$(git rev-parse --show-toplevel)
 
 ctl setup --lazy
@@ -17,7 +21,11 @@ ctl lint
 ctl test
 ctl build
 
-npm run publish
+# Note that we normally do not publish the package. Instead we delegate that to
+# GitHub Actions which will look for the tag and perform the publishing.
+if [ "$local" ]; then
+  npm run publish
+fi
 
 version=$(jq -r '.version' "$root/package.json")
 tag="v$version"
