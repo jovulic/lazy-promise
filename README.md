@@ -72,3 +72,40 @@ const transformedValue = lazyValue.later((value) => value.toUpperCase());
 
 console.log(await transformedValue); // "MY LAZY VALUE"
 ```
+
+## 🛠️ Build
+
+This project uses [Nix](https://nixos.org) for development to ensuring a consistent and reproducible environment. It is easy enough to build without it, but the following guide will be using Nix.
+
+Follow these steps to build and work on the project locally:
+
+1. **Install Nix:** If you don't have Nix installed, follow the instructions for your platform at [https://nixos.org/download.html](https://nixos.org/download.html).
+
+2. **Clone the Repository:** Clone the `lazy-promise` repository to your local machine.
+
+   ```bash
+   git clone https://github.com/jovulic/lazy-promise.git
+   cd lazy-promise
+   ```
+
+3. **Enter the Development Shell:** Use the following command to enter the Nix development shell. This will automatically install all the necessary dependencies defined in the `flake.nix` file.
+
+   ```bash
+   nix develop
+   ```
+
+   This command might take a while the first time as it downloads and installs the dependencies. Subsequent entries into the shell will be much faster.
+
+4. **Install NPM Dependencies:** Once inside the Nix shell, you'll need to install the project's npm dependencies. Even though Nix provides Node.js and npm, the project dependencies are managed by npm. We do this via the `ctl` command that is added into the development shell.
+
+   ```bash
+   ctl setup
+   ```
+
+5. **Build the Library:** You can now build the library.
+
+   ```bash
+   ctl build
+   ```
+
+   This will create a `dist` directory containing the compiled library files.
