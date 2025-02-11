@@ -17,9 +17,3 @@ commands:
     help: Run tests.
   - name: build
     help: Build the package.
-  - name: publish
-    help: Publish the package to npm.
-    flags:
-      - long: --local
-        short: -l
-        help: Publish the package locally.
