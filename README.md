@@ -6,7 +6,7 @@ This repository is a personal project created for practicing the process of buil
 
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 [![NPM](https://img.shields.io/npm/v/@jovulic/lazy-promise)](https://www.npmjs.com/package/@jovulic/lazy-promise)
-[![Build Status](https://img.shields.io/github/actions/workflow/status/jovulic/lazy-promise/build.yml?branch=main)](https://github.com/jovulic/lazy/actions)
+[![Build Status](https://img.shields.io/github/actions/workflow/status/jovulic/lazy-promise/check.yml?branch=main)](https://github.com/jovulic/lazy/actions)
 
 # **LazyPromise**
 
