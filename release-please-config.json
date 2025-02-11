@@ -9,5 +9,19 @@
       "prerelease": false
     }
   },
+  "changelog-sections": [
+    { "type": "ftr", "section": "Features" },
+    { "type": "fix", "section": "Bug Fixes" },
+    { "type": "doc", "section": "Documentation" },
+    { "type": "tst", "section": "Tests" },
+    { "type": "rvt", "section": "Reverts" },
+    { "type": "sty", "section": "Styles" },
+    { "type": "ref", "section": "Code Refactoring" },
+    { "type": "bld", "section": "Build Changes" },
+    { "type": "dpl", "section": "Deployment Changes" },
+    { "type": "dev", "section": "Development Changes" },
+    { "type": "rmv", "section": "Removals" },
+    { "type": "cfg", "section": "General Changes" }
+  ],
   "$schema": "https://raw.githubusercontent.com/googleapis/release-please/main/schemas/config.json"
 }
