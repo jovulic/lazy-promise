@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.2.1](https://github.com/jovulic/lazy-promise/compare/lazy-promise-v1.2.0...lazy-promise-v1.2.1) (2025-02-12)
+
+
+### Documentation
+
+* update build status link ([8fb398f](https://github.com/jovulic/lazy-promise/commit/8fb398f227eba7404e5f120d8d0b1321748605f5))
+
 ## [1.2.0](https://github.com/jovulic/lazy-promise/compare/lazy-promise-v1.1.1...lazy-promise-v1.2.0) (2025-02-11)
 
 
