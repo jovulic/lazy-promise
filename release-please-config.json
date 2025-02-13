@@ -21,7 +21,9 @@
     { "type": "dpl", "section": "Deployment Changes" },
     { "type": "dev", "section": "Development Changes" },
     { "type": "rmv", "section": "Removals" },
-    { "type": "cfg", "section": "General Changes" }
+    { "type": "add", "section": "General Changes" },
+    { "type": "upd", "section": "General Changes" },
+    { "type": "del", "section": "General Changes" }
   ],
   "$schema": "https://raw.githubusercontent.com/googleapis/release-please/main/schemas/config.json"
 }
