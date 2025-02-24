@@ -48,7 +48,7 @@ pnpm add @jovulic/lazy-promise
 ### **Basic Example**
 
 ```ts
-import { LazyPromise } from "lazy-promise";
+import { LazyPromise } from "@jovulic/lazy-promise";
 
 const lazyValue = new LazyPromise(async () => {
   return "My Lazy Value";
@@ -63,7 +63,7 @@ const lazyValue = new LazyPromise(async () => {
 ### **Lazy Chaining**
 
 ```ts
-import { LazyPromise } from "lazy-promise";
+import { LazyPromise } from "@jovulic/lazy-promise";
 
 const lazyValue = new LazyPromise(async () => {
   return "My Lazy Value";
