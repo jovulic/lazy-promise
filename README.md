@@ -28,19 +28,19 @@ _A lazy promise that waits until you ask it to get to work._
 Using npm:
 
 ```sh
-npm install lazy-promise
+npm install @jovulic/lazy-promise
 ```
 
 Using yarn:
 
 ```sh
-yarn add lazy-promise
+yarn add @jovulic/lazy-promise
 ```
 
 Using pnpm:
 
 ```sh
-pnpm add lazy-promise
+pnpm add @jovulic/lazy-promise
 ```
 
 ## **🚀 Usage**
