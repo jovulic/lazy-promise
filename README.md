@@ -8,22 +8,22 @@ This repository is a personal project created for practicing the process of buil
 [![NPM](https://img.shields.io/npm/v/@jovulic/lazy-promise)](https://www.npmjs.com/package/@jovulic/lazy-promise)
 [![Build Status](https://img.shields.io/github/actions/workflow/status/jovulic/lazy-promise/check.yml?branch=main)](https://github.com/jovulic/lazy-promise/actions)
 
-# **LazyPromise**
+# LazyPromise
 
 _A lazy promise that waits until you ask it to get to work._
 
-## **📌 Description**
+## 📌 Description
 
 `LazyPromise` is a lightweight utility for lazily initializing values in JavaScript and TypeScript. Specifically, it will not perform any computation until the value is accessed (e.g., awaited). Additionally, `LazyPromise` supports lazy chaining, allowing you to chain operations that also won’t execute until the result is needed.
 
-## **✨ Features**
+## ✨ Features
 
 ✅ **Lazy evaluation** – Compute values only when first accessed.  
 ✅ **Lazy Chaining** – Define transformations to values lazily.  
 ✅ **Minimal** – No dependencies.  
 ✅ **TypeScript support** – Fully typed.
 
-## **📦 Installation**
+## 📦 Installation
 
 Using npm:
 
@@ -43,9 +43,9 @@ Using pnpm:
 pnpm add @jovulic/lazy-promise
 ```
 
-## **🚀 Usage**
+## 🚀 Usage
 
-### **Basic Example**
+### Basic Example
 
 ```ts
 import { LazyPromise } from "@jovulic/lazy-promise";
@@ -60,7 +60,7 @@ const lazyValue = new LazyPromise(async () => {
 })();
 ```
 
-### **Lazy Chaining**
+### Lazy Chaining
 
 ```ts
 import { LazyPromise } from "@jovulic/lazy-promise";
