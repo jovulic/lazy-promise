@@ -1,5 +1,20 @@
 # Changelog
 
+## [1.2.1](https://github.com/jovulic/lazy-promise/compare/lazy-promise-v1.2.0...lazy-promise-v1.2.1) (2025-03-14)
+
+
+### Documentation
+
+* remove extraneous bolding ([31fdc42](https://github.com/jovulic/lazy-promise/commit/31fdc42708ab12398b53b10e056e7921684131fd))
+* update build status link ([8fb398f](https://github.com/jovulic/lazy-promise/commit/8fb398f227eba7404e5f120d8d0b1321748605f5))
+* update readme example imports to be correct ([98d72c3](https://github.com/jovulic/lazy-promise/commit/98d72c3cd99be0b54c50fbad6df4f1b7671da275))
+* update readme install instructions ([ec20d9a](https://github.com/jovulic/lazy-promise/commit/ec20d9a94b69e642d5410c8864b48e56c181dcc7))
+
+
+### Build Changes
+
+* update release please sections ([7192273](https://github.com/jovulic/lazy-promise/commit/7192273cf818c48064c25d6605ed084041d77959))
+
 ## [1.2.0](https://github.com/jovulic/lazy-promise/compare/lazy-promise-v1.1.1...lazy-promise-v1.2.0) (2025-02-11)
 
 
