@@ -1,5 +1,30 @@
 # Changelog
 
+## [1.2.1](https://github.com/jovulic/lazy-promise/compare/lazy-promise-v1.2.0...lazy-promise-v1.2.1) (2025-04-01)
+
+
+### Documentation
+
+* remove extraneous bolding ([31fdc42](https://github.com/jovulic/lazy-promise/commit/31fdc42708ab12398b53b10e056e7921684131fd))
+* update build status link ([8fb398f](https://github.com/jovulic/lazy-promise/commit/8fb398f227eba7404e5f120d8d0b1321748605f5))
+* update readme example imports to be correct ([98d72c3](https://github.com/jovulic/lazy-promise/commit/98d72c3cd99be0b54c50fbad6df4f1b7671da275))
+* update readme install instructions ([ec20d9a](https://github.com/jovulic/lazy-promise/commit/ec20d9a94b69e642d5410c8864b48e56c181dcc7))
+
+
+### Code Refactoring
+
+* **nix:** remove flake-utils for inline system function ([ce6ffc6](https://github.com/jovulic/lazy-promise/commit/ce6ffc6842527074f60ad20497086d4de62dc1fd))
+
+
+### Build Changes
+
+* update release please sections ([7192273](https://github.com/jovulic/lazy-promise/commit/7192273cf818c48064c25d6605ed084041d77959))
+
+
+### General Changes
+
+* **nix:** commit flake lock file updates ([58e3650](https://github.com/jovulic/lazy-promise/commit/58e365052e2168a7015d59ac77eb52df2712f716))
+
 ## [1.2.0](https://github.com/jovulic/lazy-promise/compare/lazy-promise-v1.1.1...lazy-promise-v1.2.0) (2025-02-11)
 
 
