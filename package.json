@@ -1,6 +1,6 @@
 {
   "name": "@jovulic/lazy-promise",
-  "version": "1.2.1",
+  "version": "1.2.2",
   "description": "A lazy promise that waits until you ask it to get to work.",
   "type": "module",
   "exports": {

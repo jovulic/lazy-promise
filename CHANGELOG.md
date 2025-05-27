@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.2.2](https://github.com/jovulic/lazy-promise/compare/lazy-promise-v1.2.1...lazy-promise-v1.2.2) (2025-05-27)
+
+
+### Features
+
+* **nix:** update nixpkgs to 25.05 ([2c9ab48](https://github.com/jovulic/lazy-promise/commit/2c9ab48a9598398f8573dcb76e8dc252291864b1))
+
 ## [1.2.1](https://github.com/jovulic/lazy-promise/compare/lazy-promise-v1.2.0...lazy-promise-v1.2.1) (2025-04-01)
 
 
