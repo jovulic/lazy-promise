@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.2.3](https://github.com/jovulic/lazy-promise/compare/lazy-promise-v1.2.2...lazy-promise-v1.2.3) (2025-06-02)
+
+
+### Features
+
+* **ctl:** replace bashly with just ([9f06703](https://github.com/jovulic/lazy-promise/commit/9f0670306a3988a50309dbbe42d5cc70081ecae8))
+
 ## [1.2.2](https://github.com/jovulic/lazy-promise/compare/lazy-promise-v1.2.1...lazy-promise-v1.2.2) (2025-05-27)
 
 
