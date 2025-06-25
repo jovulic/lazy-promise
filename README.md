@@ -8,7 +8,7 @@ This repository is a personal project created for practicing the process of buil
 [![NPM](https://img.shields.io/npm/v/@jovulic/lazy-promise)](https://www.npmjs.com/package/@jovulic/lazy-promise)
 [![Build Status](https://img.shields.io/github/actions/workflow/status/jovulic/lazy-promise/check.yml?branch=main)](https://github.com/jovulic/lazy-promise/actions)
 
-# LazyPromise
+# Lazy Promise
 
 _A lazy promise that waits until you ask it to get to work._
 
