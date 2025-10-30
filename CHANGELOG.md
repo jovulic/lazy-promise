@@ -1,5 +1,18 @@
 # Changelog
 
+## [1.2.3](https://github.com/jovulic/lazy-promise/compare/lazy-promise-v1.2.2...lazy-promise-v1.2.3) (2025-10-30)
+
+
+### Features
+
+* **ctl:** replace bashly with just ([9f06703](https://github.com/jovulic/lazy-promise/commit/9f0670306a3988a50309dbbe42d5cc70081ecae8))
+* **root:** add AGENTS.md ([aa591bc](https://github.com/jovulic/lazy-promise/commit/aa591bc0c2290516d83426f9f59a715cab11a72f))
+
+
+### General Changes
+
+* **doc:** add space to lazy promise heading ([1a13f05](https://github.com/jovulic/lazy-promise/commit/1a13f05d247446e40a041d9cc65088626dc1a2f7))
+
 ## [1.2.2](https://github.com/jovulic/lazy-promise/compare/lazy-promise-v1.2.1...lazy-promise-v1.2.2) (2025-05-27)
 
 
