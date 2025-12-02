@@ -1,5 +1,17 @@
 # Changelog
 
+## [1.3.0](https://github.com/jovulic/lazy-promise/compare/lazy-promise-v1.2.3...lazy-promise-v1.3.0) (2025-12-02)
+
+
+### Features
+
+* update to nixos-25.11 and use jovulic/release-please-action ([0d93426](https://github.com/jovulic/lazy-promise/commit/0d93426514ad24d22e32b62504364d7b62238d21))
+
+
+### General Changes
+
+* reference jovulic release please ([9dfab0e](https://github.com/jovulic/lazy-promise/commit/9dfab0edd4f7c890225b1532498bb784d02e7dc8))
+
 ## [1.2.3](https://github.com/jovulic/lazy-promise/compare/lazy-promise-v1.2.2...lazy-promise-v1.2.3) (2025-10-30)
 
 
