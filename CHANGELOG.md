@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.3.1](https://github.com/jovulic/lazy-promise/compare/lazy-promise-v1.3.0...lazy-promise-v1.3.1) (2026-03-06)
+
+
+### General Changes
+
+* break up release from publish and setup trusted publishing ([bef5906](https://github.com/jovulic/lazy-promise/commit/bef590629b53d24c601ad6bf86094de9ee9467cc))
+
 ## [1.3.0](https://github.com/jovulic/lazy-promise/compare/lazy-promise-v1.2.3...lazy-promise-v1.3.0) (2025-12-02)
 
 
