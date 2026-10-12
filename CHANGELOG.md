@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.4.1](https://github.com/jovulic/lazy-promise/compare/lazy-promise-v1.4.0...lazy-promise-v1.4.1) (2026-10-12)
+
+
+### Documentation
+
+* remove emojis ([bfdc396](https://github.com/jovulic/lazy-promise/commit/bfdc396deca3ee8fdc0857291cb655e276f48349))
+
 ## [1.4.0](https://github.com/jovulic/lazy-promise/compare/lazy-promise-v1.3.1...lazy-promise-v1.4.0) (2026-06-01)
 
 
