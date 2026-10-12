@@ -12,18 +12,18 @@ This repository is a personal project created for practicing the process of buil
 
 _A lazy promise that waits until you ask it to get to work._
 
-## 📌 Description
+## Description
 
 `LazyPromise` is a lightweight utility for lazily initializing values in JavaScript and TypeScript. Specifically, it will not perform any computation until the value is accessed (e.g., awaited). Additionally, `LazyPromise` supports lazy chaining, allowing you to chain operations that also won’t execute until the result is needed.
 
-## ✨ Features
+## Features
 
-✅ **Lazy evaluation** – Compute values only when first accessed.  
-✅ **Lazy Chaining** – Define transformations to values lazily.  
-✅ **Minimal** – No dependencies.  
-✅ **TypeScript support** – Fully typed.
+- **Lazy evaluation** – Compute values only when first accessed.
+- **Lazy Chaining** – Define transformations to values lazily.
+- **Minimal** – No dependencies.
+- **TypeScript support** – Fully typed.
 
-## 📦 Installation
+## Installation
 
 Using npm:
 
@@ -43,7 +43,7 @@ Using pnpm:
 pnpm add @jovulic/lazy-promise
 ```
 
-## 🚀 Usage
+## Usage
 
 ### Basic Example
 
@@ -74,7 +74,7 @@ const transformedValue = lazyValue.later((value) => value.toUpperCase());
 console.log(await transformedValue); // "MY LAZY VALUE"
 ```
 
-## 🛠️ Build
+## Build
 
 This project uses [Nix](https://nixos.org) for development to ensuring a consistent and reproducible environment. It is easy enough to build without it, but the following guide will be using Nix.
 
